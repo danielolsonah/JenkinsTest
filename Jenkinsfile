@@ -1,4 +1,6 @@
 node("linux") { 
-    sh "echo 'Hello World'"
-    sh "docker --version"
+    myImage = docker.build()
+    docker.image(myImage).inside() {
+        sh "node --version"
+    }
 }
