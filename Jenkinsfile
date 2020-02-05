@@ -1,6 +1,7 @@
 node("centos") { 
-    myImage = docker.build()
-    docker.image(myImage).inside() {
+    imageTag = "mycoolimage"
+    sh "docker build -t " + imageTag + " ."
+    docker.image(imageTag).inside() {
         sh "node --version"
     }
 }
